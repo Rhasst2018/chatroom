@@ -136,11 +136,12 @@ void myServer::receiveMessage()
                 response.insert("state", "true");
             }
         }       
-        if (response.value("state").toString() == "ture") {
+        if (response.value("state").toString() == "true") {
             insert.prepare("insert into user value(?, ?)");
             insert.addBindValue(JsonData.value("username").toString());
             insert.addBindValue(JsonData.value("password").toString());
             insert.exec();
+            qDebug() << "insert into database" << endl;
         }
         //返回 res
         break;
