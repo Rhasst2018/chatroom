@@ -13,6 +13,9 @@
   <property name="windowTitle">
    <string>Dialog</string>
   </property>
+  <property name="styleSheet">
+   <string notr="true"/>
+  </property>
   <layout class="QGridLayout" name="gridLayout">
    <item row="0" column="0">
     <layout class="QHBoxLayout" name="horizontalLayout_2">
@@ -204,7 +207,11 @@
     </layout>
    </item>
    <item row="3" column="0">
-    <widget class="QListWidget" name="chatLog"/>
+    <widget class="QListWidget" name="chatLog">
+     <property name="styleSheet">
+      <string notr="true"/>
+     </property>
+    </widget>
    </item>
    <item row="4" column="0">
     <layout class="QHBoxLayout" name="horizontalLayout_3">
@@ -228,6 +235,21 @@
          <width>100</width>
          <height>50</height>
         </size>
+       </property>
+       <property name="styleSheet">
+        <string notr="true">QPushButton {
+    background-color: #3cbaa2; 
+	border: 1px solid black;
+    border-radius: 5px;
+}
+
+QPushButton:disabled {
+    background-color: rgb(170, 170, 127)
+}
+
+QPushButton:pressed {
+    background-color: qlineargradient(spread:pad, x1:0, y1:0, x2:0, y2:1,   stop:0 rgba(60, 186, 162, 255), stop:1 rgba(98, 211, 162, 255))
+}</string>
        </property>
        <property name="text">
         <string>Send</string>

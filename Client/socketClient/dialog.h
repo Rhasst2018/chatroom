@@ -3,11 +3,11 @@
 
 #include <QDialog>
 #include <QDebug>
-#include <QTcpSocket>
 #include <QAbstractSocket>
-#include <QMessageBox>
 #include <QJsonDocument>
 #include <QJsonObject>
+#include <QMessageBox>
+#include <QTcpSocket>
 
 namespace Ui {
 class Dialog;
@@ -37,6 +37,12 @@ private slots:
     void on_message_cursorPositionChanged(int arg1, int arg2);
     void on_signup_clicked();
     void on_login_clicked();
+
+    void receiveShow();
+
+signals:
+    void showLogin();
+    void quit();
 };
 
 #endif // DIALOG_H

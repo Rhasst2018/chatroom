@@ -1,0 +1,12 @@
+<RCC>
+    <qresource prefix="/">
+        <file>Login_Keyborad.png</file>
+        <file>chat.png</file>
+        <file>search close.png</file>
+        <file>min.png</file>
+        <file>chat-icon.png</file>
+        <file>down arrow.png</file>
+        <file>up arrow.png</file>
+        <file>person.png</file>
+    </qresource>
+</RCC>

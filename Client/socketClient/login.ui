@@ -1,0 +1,348 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ui version="4.0">
+ <class>login</class>
+ <widget class="QDialog" name="login">
+  <property name="geometry">
+   <rect>
+    <x>0</x>
+    <y>0</y>
+    <width>539</width>
+    <height>421</height>
+   </rect>
+  </property>
+  <property name="windowTitle">
+   <string>Dialog</string>
+  </property>
+  <property name="styleSheet">
+   <string notr="true">*{font-family:Microsoft YaHei;}</string>
+  </property>
+  <widget class="QWidget" name="widget" native="true">
+   <property name="geometry">
+    <rect>
+     <x>0</x>
+     <y>0</y>
+     <width>541</width>
+     <height>421</height>
+    </rect>
+   </property>
+   <widget class="QWidget" name="loginBar" native="true">
+    <property name="geometry">
+     <rect>
+      <x>0</x>
+      <y>0</y>
+      <width>541</width>
+      <height>221</height>
+     </rect>
+    </property>
+    <property name="styleSheet">
+     <string notr="true">QWidget#loginBar{
+background-image:url(:/chat.png);
+background-repeat:no-repeat;
+background-position:center;
+background-color:qconicalgradient(cx:0.5, cy:0.5, angle:0, stop:0 rgb(52, 72, 161), stop:0.16 rgb(61, 79, 174), stop:0.225 rgb(7, 118, 209), stop:0.285 rgb(0, 170, 255), stop:0.345 rgb(79, 208, 255), stop:0.415 rgb(152, 237, 255), stop:0.52 rgb(61, 162, 209), stop:0.57 rgb(67, 221, 255), stop:0.635 rgb(65, 195, 255), stop:0.695 rgb(32, 158, 255), stop:0.75 rgb(44, 164, 255), stop:0.815 rgb(7, 118, 208), stop:0.88 rgb(61, 79, 174), stop:0.935 rgb(52, 72, 161), stop:1 rgb(51, 70, 157))
+}</string>
+    </property>
+    <widget class="QPushButton" name="closeButton">
+     <property name="geometry">
+      <rect>
+       <x>505</x>
+       <y>10</y>
+       <width>15</width>
+       <height>15</height>
+      </rect>
+     </property>
+     <property name="minimumSize">
+      <size>
+       <width>15</width>
+       <height>0</height>
+      </size>
+     </property>
+     <property name="styleSheet">
+      <string notr="true">QPushButton#closeButton {
+    border-radius:3px;
+border-image:url(:/search close.png) no-repeat;
+}
+QPushButton#closeButton:hover
+{
+    background-color:rgb(255, 0, 0)
+}</string>
+     </property>
+     <property name="text">
+      <string/>
+     </property>
+    </widget>
+    <widget class="QPushButton" name="minButton">
+     <property name="geometry">
+      <rect>
+       <x>466</x>
+       <y>10</y>
+       <width>20</width>
+       <height>20</height>
+      </rect>
+     </property>
+     <property name="styleSheet">
+      <string notr="true">QPushButton#minButton {
+    border-radius:3px;
+border-image:url(:/min.png) no-repeat;
+}</string>
+     </property>
+     <property name="text">
+      <string/>
+     </property>
+    </widget>
+   </widget>
+   <widget class="QWidget" name="loginFunction" native="true">
+    <property name="geometry">
+     <rect>
+      <x>0</x>
+      <y>220</y>
+      <width>541</width>
+      <height>201</height>
+     </rect>
+    </property>
+    <property name="styleSheet">
+     <string notr="true">QCheckBox
+{
+    color:rgb(101 , 101 , 101);
+}
+QPushButton
+{
+    color:rgb(38 , 133 , 227);
+    background-color:transparent;
+	border:none;
+}
+QPushButton:hover
+{
+    color:rgb(97 , 179 , 246);
+}
+
+QPushButton:pressed
+{
+    color:rgb(0 , 109 , 176);
+}
+
+QWidget {
+	background-color:rgb(235, 242, 249);
+}
+</string>
+    </property>
+    <widget class="QPushButton" name="loginButton">
+     <property name="geometry">
+      <rect>
+       <x>150</x>
+       <y>140</y>
+       <width>241</width>
+       <height>41</height>
+      </rect>
+     </property>
+     <property name="styleSheet">
+      <string notr="true">/*登陆按钮*/
+
+QPushButton#loginButton
+{
+    color:white;
+    background-color:rgb(14 , 150 , 254);
+    border-radius:5px;
+}
+
+QPushButton#loginButton:hover
+{
+    color:white;
+    background-color:rgb(44 , 137 , 255);
+}
+
+QPushButton#loginButton:pressed
+{
+    color:white;
+    background-color:rgb(14 , 135 , 228);
+    padding-left:3px;
+    padding-top:3px;
+}</string>
+     </property>
+     <property name="text">
+      <string>登  录</string>
+     </property>
+    </widget>
+    <widget class="QComboBox" name="comboBox">
+     <property name="geometry">
+      <rect>
+       <x>150</x>
+       <y>20</y>
+       <width>241</width>
+       <height>41</height>
+      </rect>
+     </property>
+     <property name="styleSheet">
+      <string notr="true">/*下拉列表框*/
+QComboBox
+{
+    background:white;
+    padding-left:5px ;
+    border-top-left-radius:3px;
+    border-top-right-radius:3px;
+    border: 1px solid rgb(209 , 209 , 209);
+}
+QComboBox:hover
+{
+    border: 1px solid rgb(21 , 131 , 221);
+}
+QComboBox QAbstractItemView::item
+{
+    height:40px;
+}
+QComboBox::down-arrow
+{
+    border-image:url(:/down arrow.png)
+}
+QComboBox::down-arrow:hover
+{
+    border-image:url(:/down arrow.png)
+}
+QComboBox::down-arrow:on
+{
+    border-image:url(:/up arrow.png)
+}
+QComboBox::drop-down
+{
+    width:20px;
+    background:transparent;
+    padding-right:5px;
+}</string>
+     </property>
+    </widget>
+    <widget class="QLineEdit" name="passwordEdit">
+     <property name="geometry">
+      <rect>
+       <x>150</x>
+       <y>60</y>
+       <width>241</width>
+       <height>41</height>
+      </rect>
+     </property>
+     <property name="styleSheet">
+      <string notr="true">/*密码框*/
+QLineEdit#passwordEdit
+{
+    background:white;
+    padding-left:5px ;
+    padding-top:1px ;
+    border-bottom-left-radius:3px;
+    border-bottom-right-radius:3px;
+    border: 1px solid rgb(209 , 209 , 209);
+    border-top:transparent;
+}
+QLineEdit#passwordEdit:hover
+{
+    padding-top:0px ;
+    border: 1px solid rgb(21 , 131 , 221);
+}
+
+</string>
+     </property>
+     <property name="text">
+      <string/>
+     </property>
+    </widget>
+    <widget class="QPushButton" name="pButtonKeyboard">
+     <property name="geometry">
+      <rect>
+       <x>365</x>
+       <y>70</y>
+       <width>22</width>
+       <height>22</height>
+      </rect>
+     </property>
+     <property name="styleSheet">
+      <string notr="true">/*密码框中的小键盘按钮*/
+QPushButton#pButtonKeyboard
+{
+    border-image:url(:/Login_Keyborad.png) 0 20 0 20 ;
+background-color:white;
+}
+</string>
+     </property>
+     <property name="text">
+      <string/>
+     </property>
+    </widget>
+    <widget class="QPushButton" name="registerLabel">
+     <property name="geometry">
+      <rect>
+       <x>400</x>
+       <y>30</y>
+       <width>71</width>
+       <height>28</height>
+      </rect>
+     </property>
+     <property name="styleSheet">
+      <string notr="true"/>
+     </property>
+     <property name="text">
+      <string>注册账号</string>
+     </property>
+    </widget>
+    <widget class="QPushButton" name="modifyLabel">
+     <property name="geometry">
+      <rect>
+       <x>400</x>
+       <y>70</y>
+       <width>71</width>
+       <height>28</height>
+      </rect>
+     </property>
+     <property name="text">
+      <string>修改密码</string>
+     </property>
+    </widget>
+    <widget class="QWidget" name="layoutWidget">
+     <property name="geometry">
+      <rect>
+       <x>150</x>
+       <y>110</y>
+       <width>241</width>
+       <height>26</height>
+      </rect>
+     </property>
+     <layout class="QHBoxLayout" name="horizontalLayout">
+      <item>
+       <widget class="QCheckBox" name="rememberPassword">
+        <property name="text">
+         <string>记住密码</string>
+        </property>
+       </widget>
+      </item>
+      <item>
+       <spacer name="horizontalSpacer">
+        <property name="orientation">
+         <enum>Qt::Horizontal</enum>
+        </property>
+        <property name="sizeHint" stdset="0">
+         <size>
+          <width>40</width>
+          <height>20</height>
+         </size>
+        </property>
+       </spacer>
+      </item>
+      <item>
+       <widget class="QCheckBox" name="autoLogin">
+        <property name="text">
+         <string>自动登录</string>
+        </property>
+       </widget>
+      </item>
+     </layout>
+    </widget>
+    <zorder>layoutWidget</zorder>
+    <zorder>passwordEdit</zorder>
+    <zorder>loginButton</zorder>
+    <zorder>pButtonKeyboard</zorder>
+    <zorder>comboBox</zorder>
+    <zorder>registerLabel</zorder>
+    <zorder>modifyLabel</zorder>
+   </widget>
+  </widget>
+ </widget>
+ <resources/>
+ <connections/>
+</ui>

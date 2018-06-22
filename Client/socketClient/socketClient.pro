@@ -27,12 +27,22 @@ SOURCES += \
         main.cpp \
         dialog.cpp \
     dialog.cpp \
-    main.cpp
+    main.cpp \
+    login.cpp \
+    global.cpp
 
 HEADERS += \
         dialog.h \
     dialog.h \
-    ui_dialog.h
+    ui_dialog.h \
+    login.h \
+    global.h
 
 FORMS += \
-        dialog.ui
+        dialog.ui \
+    login.ui
+
+RESOURCES += \
+    icons.qrc
+
+DISTFILES +=

@@ -1,4 +1,5 @@
 #include "dialog.h"
+#include "global.h"
 #include "ui_dialog.h"
 
 Dialog::Dialog(QWidget *parent) :
@@ -7,7 +8,7 @@ Dialog::Dialog(QWidget *parent) :
 {
     ui->setupUi(this);
     this->setWindowTitle("Client");
-    socket = new QTcpSocket(this);
+    socket = new QTcpSocket();
 
     connect(socket, SIGNAL(connected()), this, SLOT(connected()));
     connect(socket, SIGNAL(disconnected()), this, SLOT(disconnected()));
@@ -15,6 +16,11 @@ Dialog::Dialog(QWidget *parent) :
     connect(socket, SIGNAL(bytesWritten(qint64)), this, SLOT(bytesWritten(qint64)));
     connect(ui->chatLog->model(), SIGNAL(rowsInserted(QModelIndex,int,int)),
             ui->chatLog, SLOT(scrollToBottom()));
+}
+
+void Dialog::receiveShow()
+{
+    this->show();
 }
 
 //is connected to server
@@ -132,6 +138,9 @@ void Dialog::on_signup_clicked()
 
 void Dialog::on_login_clicked()
 {
+    this->hide();
+    emit showLogin();
+    /*
     if (ui->nickname->text().isEmpty() || ui->login_password->text().isEmpty()) {
         QMessageBox::warning(this, "Wrong", "Username or Password cannot empty");
         return;
@@ -146,4 +155,5 @@ void Dialog::on_login_clicked()
         socket->flush();
         socket->waitForBytesWritten(3000);
     }
+    */
 }
