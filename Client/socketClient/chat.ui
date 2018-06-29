@@ -1,0 +1,381 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ui version="4.0">
+ <class>Chat</class>
+ <widget class="QWidget" name="Chat">
+  <property name="geometry">
+   <rect>
+    <x>0</x>
+    <y>0</y>
+    <width>466</width>
+    <height>490</height>
+   </rect>
+  </property>
+  <property name="minimumSize">
+   <size>
+    <width>0</width>
+    <height>0</height>
+   </size>
+  </property>
+  <property name="maximumSize">
+   <size>
+    <width>595</width>
+    <height>653</height>
+   </size>
+  </property>
+  <property name="windowTitle">
+   <string>Form</string>
+  </property>
+  <property name="styleSheet">
+   <string notr="true">background-color:rgb(235, 242, 249);
+border-radius:5</string>
+  </property>
+  <widget class="QFrame" name="upperFrame">
+   <property name="geometry">
+    <rect>
+     <x>0</x>
+     <y>0</y>
+     <width>466</width>
+     <height>51</height>
+    </rect>
+   </property>
+   <property name="styleSheet">
+    <string notr="true"> background-color:rgba(85, 170, 255,255);
+
+
+</string>
+   </property>
+   <property name="frameShape">
+    <enum>QFrame::StyledPanel</enum>
+   </property>
+   <property name="frameShadow">
+    <enum>QFrame::Raised</enum>
+   </property>
+   <widget class="QLabel" name="titleLabel">
+    <property name="geometry">
+     <rect>
+      <x>10</x>
+      <y>10</y>
+      <width>101</width>
+      <height>31</height>
+     </rect>
+    </property>
+    <property name="styleSheet">
+     <string notr="true">font: 75 italic 13pt &quot;Arial&quot;;
+background-color:rgba(255,255,255,0);</string>
+    </property>
+    <property name="text">
+     <string>QUICKCHAT</string>
+    </property>
+   </widget>
+   <widget class="QLabel" name="titleIcon">
+    <property name="geometry">
+     <rect>
+      <x>120</x>
+      <y>10</y>
+      <width>41</width>
+      <height>41</height>
+     </rect>
+    </property>
+    <property name="styleSheet">
+     <string notr="true">background-color:rgba(255,255,255,0);
+image: url(:/chat-icon.png);</string>
+    </property>
+    <property name="text">
+     <string/>
+    </property>
+   </widget>
+   <widget class="QPushButton" name="closeButton_2">
+    <property name="geometry">
+     <rect>
+      <x>440</x>
+      <y>10</y>
+      <width>15</width>
+      <height>15</height>
+     </rect>
+    </property>
+    <property name="minimumSize">
+     <size>
+      <width>15</width>
+      <height>0</height>
+     </size>
+    </property>
+    <property name="styleSheet">
+     <string notr="true">QPushButton#closeButton_2 {
+    border-radius:3px;
+border-image:url(:/search close.png) no-repeat;;
+}
+QPushButton#closeButton_2:hover
+{
+    background-color:rgb(255, 0, 0)
+}
+</string>
+    </property>
+    <property name="text">
+     <string/>
+    </property>
+   </widget>
+   <widget class="QPushButton" name="minButton_2">
+    <property name="geometry">
+     <rect>
+      <x>410</x>
+      <y>10</y>
+      <width>20</width>
+      <height>20</height>
+     </rect>
+    </property>
+    <property name="styleSheet">
+     <string notr="true">border-radius:3px;
+border-image:url(:/min.png) no-repeat;
+</string>
+    </property>
+    <property name="text">
+     <string/>
+    </property>
+   </widget>
+  </widget>
+  <widget class="QPlainTextEdit" name="messageEdit">
+   <property name="geometry">
+    <rect>
+     <x>0</x>
+     <y>410</y>
+     <width>466</width>
+     <height>81</height>
+    </rect>
+   </property>
+   <property name="styleSheet">
+    <string notr="true">background-color: rgb(255, 255, 255);
+font: 75 10pt &quot;Microsoft YaHei UI&quot;;</string>
+   </property>
+   <property name="plainText">
+    <string/>
+   </property>
+  </widget>
+  <widget class="QListWidget" name="listWidget">
+   <property name="geometry">
+    <rect>
+     <x>0</x>
+     <y>50</y>
+     <width>466</width>
+     <height>321</height>
+    </rect>
+   </property>
+   <property name="styleSheet">
+    <string notr="true">background-color: rgb(255, 255, 255);
+font: 75 10pt &quot;Microsoft YaHei UI&quot;;</string>
+   </property>
+  </widget>
+  <widget class="QWidget" name="lowerWidget" native="true">
+   <property name="geometry">
+    <rect>
+     <x>0</x>
+     <y>370</y>
+     <width>466</width>
+     <height>41</height>
+    </rect>
+   </property>
+   <property name="styleSheet">
+    <string notr="true"> background-color: rgb(85, 170, 255)
+
+</string>
+   </property>
+   <widget class="QPushButton" name="sendButton">
+    <property name="geometry">
+     <rect>
+      <x>400</x>
+      <y>10</y>
+      <width>51</width>
+      <height>21</height>
+     </rect>
+    </property>
+    <property name="styleSheet">
+     <string notr="true">QPushButton#sendButton{
+font: 25 10pt &quot;Microsoft YaHei UI Light&quot;;
+background-color: rgb(211, 211, 211)
+}
+QPushButton#sendButton:hover
+{
+background-color: rgb(124, 124, 124)
+}
+
+
+</string>
+    </property>
+    <property name="text">
+     <string>发送</string>
+    </property>
+   </widget>
+   <widget class="QWidget" name="layoutWidget">
+    <property name="geometry">
+     <rect>
+      <x>10</x>
+      <y>10</y>
+      <width>261</width>
+      <height>32</height>
+     </rect>
+    </property>
+    <layout class="QHBoxLayout" name="horizontalLayout">
+     <property name="sizeConstraint">
+      <enum>QLayout::SetMinAndMaxSize</enum>
+     </property>
+     <item>
+      <widget class="QToolButton" name="faceButton">
+       <property name="maximumSize">
+        <size>
+         <width>23</width>
+         <height>23</height>
+        </size>
+       </property>
+       <property name="styleSheet">
+        <string notr="true">border-style:flat;
+background-color:rgba(255,255,255,0);
+imgae: url(:/new/prefix1/rsc/1134168.png);</string>
+       </property>
+       <property name="text">
+        <string>...</string>
+       </property>
+       <property name="icon">
+        <iconset>
+         <selectedon>:/smile.png</selectedon>
+        </iconset>
+       </property>
+       <property name="iconSize">
+        <size>
+         <width>30</width>
+         <height>30</height>
+        </size>
+       </property>
+      </widget>
+     </item>
+     <item>
+      <spacer name="horizontalSpacer">
+       <property name="orientation">
+        <enum>Qt::Horizontal</enum>
+       </property>
+       <property name="sizeHint" stdset="0">
+        <size>
+         <width>40</width>
+         <height>20</height>
+        </size>
+       </property>
+      </spacer>
+     </item>
+     <item>
+      <widget class="QToolButton" name="videoButton">
+       <property name="maximumSize">
+        <size>
+         <width>23</width>
+         <height>23</height>
+        </size>
+       </property>
+       <property name="styleSheet">
+        <string notr="true">border-style:flat;
+background-color:rgba(255,255,255,0);
+imgae: url(:/new/prefix1/rsc/1134168.png);</string>
+       </property>
+       <property name="text">
+        <string>...</string>
+       </property>
+       <property name="icon">
+        <iconset>
+         <selectedon>:/video.png</selectedon>
+        </iconset>
+       </property>
+       <property name="iconSize">
+        <size>
+         <width>34</width>
+         <height>34</height>
+        </size>
+       </property>
+      </widget>
+     </item>
+     <item>
+      <spacer name="horizontalSpacer_2">
+       <property name="orientation">
+        <enum>Qt::Horizontal</enum>
+       </property>
+       <property name="sizeHint" stdset="0">
+        <size>
+         <width>40</width>
+         <height>20</height>
+        </size>
+       </property>
+      </spacer>
+     </item>
+     <item>
+      <widget class="QToolButton" name="voiceButton">
+       <property name="maximumSize">
+        <size>
+         <width>23</width>
+         <height>23</height>
+        </size>
+       </property>
+       <property name="styleSheet">
+        <string notr="true">border-style:flat;
+background-color:rgba(255,255,255,0);
+imgae: url(:/new/prefix1/rsc/1134168.png);</string>
+       </property>
+       <property name="text">
+        <string>...</string>
+       </property>
+       <property name="icon">
+        <iconset>
+         <selectedon>:/voice.png</selectedon>
+        </iconset>
+       </property>
+       <property name="iconSize">
+        <size>
+         <width>30</width>
+         <height>30</height>
+        </size>
+       </property>
+      </widget>
+     </item>
+     <item>
+      <spacer name="horizontalSpacer_3">
+       <property name="orientation">
+        <enum>Qt::Horizontal</enum>
+       </property>
+       <property name="sizeHint" stdset="0">
+        <size>
+         <width>40</width>
+         <height>20</height>
+        </size>
+       </property>
+      </spacer>
+     </item>
+     <item>
+      <widget class="QToolButton" name="fileButton">
+       <property name="maximumSize">
+        <size>
+         <width>23</width>
+         <height>23</height>
+        </size>
+       </property>
+       <property name="styleSheet">
+        <string notr="true">border-style:flat;
+background-color:rgba(255,255,255,0);
+imgae: url(:/new/prefix1/rsc/1134168.png);</string>
+       </property>
+       <property name="text">
+        <string>...</string>
+       </property>
+       <property name="icon">
+        <iconset>
+         <selectedon>:/file.png</selectedon>
+        </iconset>
+       </property>
+       <property name="iconSize">
+        <size>
+         <width>30</width>
+         <height>30</height>
+        </size>
+       </property>
+      </widget>
+     </item>
+    </layout>
+   </widget>
+  </widget>
+ </widget>
+ <resources/>
+ <connections/>
+</ui>

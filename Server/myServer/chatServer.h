@@ -22,7 +22,7 @@ const QStringList message_type = {
     "messageimage",
     "messagevoice",
     "messagevideo",
-    "messagefile"
+    "files"
 };
 
 namespace Ui {

@@ -176,7 +176,21 @@ void myServer::receiveMessage()
 
     case 6:
         response.insert("type", "message");
+        response.insert("username", JsonData.value("username").toString());
         response.insert("content", JsonData.value("content").toString());
+        res = QJsonDocument(response).toJson();
+        foreach(QTcpSocket *socket, connects) {
+            socket->write(res);
+            socket->flush();
+            socket->waitForBytesWritten(3000);
+        }
+        break;
+
+    case 10:
+        response.insert("type", "files");
+        response.insert("filename", JsonData.value("filename").toString());
+        response.insert("username", JsonData.value("username").toString());
+        response.insert("filecontent", JsonData.value("filecontent").toString());
         res = QJsonDocument(response).toJson();
         foreach(QTcpSocket *socket, connects) {
             socket->write(res);
@@ -186,7 +200,7 @@ void myServer::receiveMessage()
         break;
     }
 
-    if (response.value("type").toString() != "message") {
+    if (response.value("type").toString() != "message" && response.value("type").toString() != "files") {
         res = QJsonDocument(response).toJson();
         socket->write(res);
         socket->flush();

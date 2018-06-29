@@ -29,20 +29,34 @@ SOURCES += \
     dialog.cpp \
     main.cpp \
     login.cpp \
-    global.cpp
+    global.cpp \
+    reg.cpp \
+    changepassword.cpp \
+    chat.cpp
 
 HEADERS += \
         dialog.h \
     dialog.h \
     ui_dialog.h \
     login.h \
-    global.h
+    global.h \
+    reg.h \
+    changepassword.h \
+    chat.h
 
 FORMS += \
         dialog.ui \
-    login.ui
+    login.ui \
+    reg.ui \
+    changepassword.ui \
+    chat.ui
 
 RESOURCES += \
     icons.qrc
 
 DISTFILES +=
+#INCLUDEPATH += C:/opencv/build/include
+#INCLUDEPATH += C:/opencv/build/include/opencv
+#INCLUDEPATH += C:/opencv/build/include/opencv2
+#LIBS += C:/opencv/build/x64/vc14/lib/opencv_world341.lib \
+#        C:/opencv/build/x64/vc14/lib/opencv_world341d.lib

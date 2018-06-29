@@ -1,34 +1,17 @@
-#include "login.h"
-#include "global.h"
-#include "ui_login.h"
+#include "reg.h"
+#include "ui_reg.h"
 
-
-login::login(QWidget *parent) :
+reg::reg(QWidget *parent) :
     QDialog(parent, Qt::Dialog| Qt::FramelessWindowHint),
-    ui(new Ui::login)
+    ui(new Ui::reg)
 {
     ui->setupUi(this);
-    ui->passwordEdit->setEchoMode(QLineEdit::Password);
-    ui->passwordEdit->setTextMargins(1,1,QSize(26,26).width(),1);
-
     ui->comboBox->setInsertPolicy(QComboBox::InsertAfterCurrent);
     ui->comboBox->setEditable(true);
-    //初始化登录列表
-    QSettings *configIniRead = new QSettings("user.ini", QSettings::IniFormat);
-
-    QStringList userList = configIniRead->childGroups();
-    qDebug() << userList;
-    foreach (QString user, userList) {
-        QString username = configIniRead->value(user + "/username").toString();
-        QString password = configIniRead->value(user + "/password", "").toString();
-        ui->comboBox->addItem(username);
-        userLogList.insert(username, password);
-    }
-
-    delete configIniRead;
-
     ui->comboBox->setAutoCompletion(true);
     ui->comboBox->setCurrentText("");
+    ui->passwordEdit->setEchoMode(QLineEdit::Password);
+    ui->passwordEdit->setTextMargins(1,1,QSize(26,26).width(),1);
     //初始化服务器连接
     socket = new QTcpSocket();
     connect(socket, SIGNAL(readyRead()), this, SLOT(readyRead()));
@@ -38,24 +21,13 @@ login::login(QWidget *parent) :
     mMoveing = false;
 }
 
-login::~login()
+reg::~reg()
 {
-    delete ui;
+delete ui;
 }
 
 
-
-void login::on_rememberPassword_stateChanged(int arg1)
-{
-
-}
-
-void login::on_autoLogin_stateChanged(int arg1)
-{
-
-}
-
-void login::on_loginButton_clicked()
+void reg::on_regButton_clicked()
 {
     if (ui->comboBox->currentText().isEmpty()|| ui->passwordEdit->text().isEmpty()) {
         QMessageBox::warning(this, "Wrong", "Username or Password cannot empty");
@@ -69,39 +41,42 @@ void login::on_loginButton_clicked()
     socket->connectToHost(serverIp, quint16(port.toUInt()));
     qDebug() << serverIp << quint16(port.toUInt()) << endl;
     delete configIniRead;
+    QString name =ui->comboBox->currentText();
+    QString password=ui->passwordEdit->text();
 
+    QString pattern("[0-9a-zA-Z]+");
+    QRegExp rx(pattern);
+    if(password.contains(' ')){
+        QMessageBox::warning(this, "Wrong", " Password cannot have space");
+        return;
+    }
+    else if(password.length()>16||password.length()<8){
+        QMessageBox::warning(this, "Wrong", " Password length should be 8-16");
+        return;
+    }
+    else if(rx.exactMatch(name)==0){
+        QMessageBox::warning(this, "Wrong", " name should only be a-z A-Z 0-9");
+        return;
+
+    }else{
+
+    }
     if (!socket->waitForConnected(3000)) {
         QMessageBox::warning(this, "Error", socket->errorString());
     }
     else {
         QJsonObject request;
-        request.insert("type", "login");
-        request.insert("username", ui->comboBox->currentText());
-        request.insert("password", ui->passwordEdit->text());
+        request.insert("type", "register");
+        request.insert("username",name);
+        request.insert("password", password);
         //send to server
         socket->write(QJsonDocument(request).toJson());
         socket->flush();
         socket->waitForBytesWritten(3000);
-        QString *tempCell = getGlobalUsername();
-        *tempCell = ui->comboBox->currentText();
-        emit callChat();
-        this->hide();
     }
 }
-
-void login::receiveShow()
-{
-    this->show();
-}
-
-void login::on_registerLabel_clicked()
-{
-    this->hide();
-    emit showReg();
-}
-
 //重写鼠标按下事件
-void login::mousePressEvent(QMouseEvent *event)
+void reg::mousePressEvent(QMouseEvent *event)
 {
     mMoveing = true;
     //记录下鼠标相对于窗口的位置
@@ -112,7 +87,7 @@ void login::mousePressEvent(QMouseEvent *event)
 }
 
 //重写鼠标移动事件
-void login::mouseMoveEvent(QMouseEvent *event)
+void reg::mouseMoveEvent(QMouseEvent *event)
 {
     //(event->buttons() && Qt::LeftButton)按下是左键
     //通过事件event->globalPos()知道鼠标坐标，鼠标坐标减去鼠标相对于窗口位置，就是窗口在整个屏幕的坐标
@@ -125,17 +100,16 @@ void login::mouseMoveEvent(QMouseEvent *event)
     return QDialog::mouseMoveEvent(event);
 }
 
-void login::mouseReleaseEvent(QMouseEvent *event)
+void reg::mouseReleaseEvent(QMouseEvent *event)
 {
     mMoveing = false;
 }
-
-void login::on_closeButton_clicked()
+void reg::on_closeButton_clicked()
 {
+    //this->hide();
     emit quit();
 }
-
-void login::on_minButton_clicked()
+void reg::on_minButton_clicked()
 {
     //托盘信息相关
     this->hide();
@@ -146,8 +120,7 @@ void login::on_minButton_clicked()
     connect(trayIcon,SIGNAL(activated(QSystemTrayIcon::ActivationReason)),this,SLOT(on_activatedSysTrayIcon(QSystemTrayIcon::ActivationReason)));
     trayIcon->show();
 }
-
-void login::on_activatedSysTrayIcon(QSystemTrayIcon::ActivationReason reason)
+void reg::on_activatedSysTrayIcon(QSystemTrayIcon::ActivationReason reason)
 {
     switch(reason){
     case QSystemTrayIcon::Trigger:
@@ -164,7 +137,11 @@ void login::on_activatedSysTrayIcon(QSystemTrayIcon::ActivationReason reason)
     }
 }
 
-void login::readyRead()
+void reg::bytesWritten(qint64 bytes)
+{
+    qDebug() << "Bytes Written: " << bytes;
+}
+void reg::readyRead()
 {
     QByteArray data= socket->readAll();
     QJsonObject response= QJsonDocument::fromJson(data).object();
@@ -172,43 +149,18 @@ void login::readyRead()
         if (response.value("state").toString() == "false") {
             QMessageBox::warning(this, "Wroing", response.value("tips").toString());
         }
-        else {
-            qDebug() << userLogList << endl;
-            *getGlobalUsername() = ui->comboBox->currentText();
-            if (userLogList.value(ui->comboBox->currentText(), NULL) == NULL ||
-                    (userLogList.value(ui->comboBox->currentText(), NULL) == "" &&
-                     ui->rememberPassword->isChecked())) {
-                QSettings *configIniWrite = new QSettings("user.ini", QSettings::IniFormat);
-                QStringList userList = configIniWrite->childGroups();
-                QString count = QString::number(userList.count(), 10);
-
-                configIniWrite->setValue(count + "/username", ui->comboBox->currentText());
-                if (ui->rememberPassword->isChecked()) {
-                    configIniWrite->setValue(count + "/password", ui->passwordEdit->text());
-                }
-                delete configIniWrite;
-            }
+        else if(response.value("state").toString() == "true"){
+            QMessageBox::information(this, "success", "Let's try");
+            this->showLogin();
+            this->hide();
+        }else{
+            printf("Damm\n");
+            printf("%s\n",response.value("state").toString().toLatin1());
         }
     }
 }
 
-void login::bytesWritten(qint64 bytes)
+void reg::receiveShow()
 {
-    qDebug() << "Bytes Written: " << bytes;
-}
-
-void login::on_comboBox_currentIndexChanged(const QString &arg1)
-{
-    ui->passwordEdit->setText(userLogList[arg1]);
-}
-
-void login::on_modifyLabel_clicked()
-{
-    this->hide();
-    emit showChange();
-}
-
-void login::on_passwordEdit_returnPressed()
-{
-    on_loginButton_clicked();
+    this->show();
 }

@@ -8,5 +8,14 @@
         <file>down arrow.png</file>
         <file>up arrow.png</file>
         <file>person.png</file>
+        <file>reg.png</file>
+        <file>changepassword.png</file>
+        <file>clock.png</file>
+        <file>file.png</file>
+        <file>smile.png</file>
+        <file>stars_497px_1197136_easyicon.net.png</file>
+        <file>telephone_150px_1166911_easyicon.net.png</file>
+        <file>video.png</file>
+        <file>voice.png</file>
     </qresource>
 </RCC>

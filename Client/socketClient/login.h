@@ -1,6 +1,7 @@
 #ifndef LOGIN_H
 #define LOGIN_H
-
+#include "reg.h"
+#include "changepassword.h"
 #include <QDialog>
 #include <QtGui/QMouseEvent>
 #include <QSystemTrayIcon>
@@ -50,9 +51,14 @@ private slots:
 
     void on_comboBox_currentIndexChanged(const QString &arg1);
 
-signals:
-    void showMain();
+    void on_modifyLabel_clicked();
 
+    void on_passwordEdit_returnPressed();
+
+signals:
+    void callChat();
+    void showReg();
+    void showChange();
     void quit();
 
 protected:
@@ -62,6 +68,7 @@ protected:
     virtual void mouseMoveEvent(QMouseEvent *event);
 
     virtual void mouseReleaseEvent(QMouseEvent *event);
+
 
 private:
     Ui::login *ui;
